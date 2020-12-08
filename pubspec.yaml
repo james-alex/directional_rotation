@@ -1,0 +1,19 @@
+name: directional_rotation
+description: >-
+  A widget that implicitly rotates its child to the provided angle
+  in the direction allowed by the constraints: closest, furthest,
+  clockwise, or counter-clockwise.
+version: 0.1.0+1
+homepage: https://github.com/james-alex/directional_rotation
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
