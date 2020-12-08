@@ -14,6 +14,8 @@ import 'package:directional_rotation/directional_rotation.dart';
 rotates its [child] to the [angle] whenever the [angle] is updated.
 
 ```dart
+/// Whenever [angle] is modified, the [DirectionalRotation]
+/// will rotate its child to the new [angle].
 var angle = 180.0;
 
 DirectionalRotation(
@@ -67,7 +69,7 @@ DirectionalRotation(
 );
 ```
 
-## Directions
+## Directionality
 
 By default the [child] will rotate in the direction that has the shorest span
 to the new [angle] from the current [angle], whenever [angle] is updated.
