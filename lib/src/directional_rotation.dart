@@ -152,11 +152,11 @@ class _DirectionalRotationState extends State<DirectionalRotation>
             (angle < _controller.value ? angle : angle - 1.0);
 
         if (widget.direction == RotationDirection.furthest) {
-          direction = clockwise > counterClockwise
+          direction = clockwise >= counterClockwise
               ? RotationDirection.clockwise
               : RotationDirection.counterClockwise;
         } else {
-          direction = clockwise < counterClockwise
+          direction = clockwise <= counterClockwise
               ? RotationDirection.clockwise
               : RotationDirection.counterClockwise;
         }

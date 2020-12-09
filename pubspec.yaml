@@ -3,7 +3,7 @@ description: >-
   A widget that implicitly rotates its child to the provided angle
   in the direction allowed by the constraints: closest, furthest,
   clockwise, or counter-clockwise.
-version: 0.1.0+1
+version: 0.1.0+2
 homepage: https://github.com/james-alex/directional_rotation
 
 environment:
