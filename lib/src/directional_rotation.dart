@@ -1,4 +1,4 @@
-import 'dart:math' show pi;
+import 'dart:math' as math;
 import 'package:flutter/widgets.dart';
 
 /// The direction the [DirectionalRotation] will rotate its child in.
@@ -44,21 +44,16 @@ class DirectionalRotation extends StatefulWidget {
   /// [onComplete] is a callback that's called each time the animation
   /// completes.
   const DirectionalRotation({
-    Key key,
-    @required this.angle,
-    @required this.child,
+    Key? key,
+    required this.angle,
+    required this.child,
     this.scale = 360.0,
     this.curve = Curves.linear,
     this.duration = const Duration(seconds: 1),
     this.factorDuration = true,
     this.direction = RotationDirection.closest,
     this.onComplete,
-  })  : assert(angle != null),
-        assert(scale != null && scale != 0),
-        assert(curve != null),
-        assert(duration != null),
-        assert(factorDuration != null),
-        assert(direction != null),
+  })  : assert(scale != 0),
         super(key: key);
 
   /// The angle currently applied to the child.
@@ -92,7 +87,7 @@ class DirectionalRotation extends StatefulWidget {
   final RotationDirection direction;
 
   /// A callback called each time the animation completes.
-  final VoidCallback onComplete;
+  final VoidCallback? onComplete;
 
   @override
   _DirectionalRotationState createState() => _DirectionalRotationState();
@@ -101,7 +96,7 @@ class DirectionalRotation extends StatefulWidget {
 class _DirectionalRotationState extends State<DirectionalRotation>
     with SingleTickerProviderStateMixin<DirectionalRotation> {
   /// The animation controller controlling the [Transform.rotate] widget.
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -119,7 +114,7 @@ class _DirectionalRotationState extends State<DirectionalRotation>
     if (widget.onComplete != null) {
       _controller.addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-          widget.onComplete();
+          widget.onComplete!();
         }
       });
     }
@@ -142,7 +137,7 @@ class _DirectionalRotationState extends State<DirectionalRotation>
       var angle = (widget.angle / widget.scale) + _controller.value.floor();
 
       // Determine which direction to rotate the child in.
-      RotationDirection direction;
+      RotationDirection? direction;
 
       if (widget.direction == RotationDirection.furthest ||
           widget.direction == RotationDirection.closest) {
@@ -190,7 +185,7 @@ class _DirectionalRotationState extends State<DirectionalRotation>
   @override
   Widget build(BuildContext context) {
     return Transform.rotate(
-      angle: (_controller.value * 360) * (pi / 180),
+      angle: (_controller.value * 360) * (math.pi / 180),
       child: widget.child,
     );
   }
